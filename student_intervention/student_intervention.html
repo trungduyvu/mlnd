@@ -11801,7 +11801,7 @@ This is a classification problem because we need to classify whether a student m
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Import libraries</span>
@@ -12044,14 +12044,14 @@ This is a classification problem because we need to classify whether a student m
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Calculate number of students</span>
 <span class="n">n_students</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">student_data</span><span class="p">)</span>
 
 <span class="c1"># TODO: Calculate number of features</span>
-<span class="n">n_features</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">student_data</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<span class="n">n_features</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">student_data</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
 
 <span class="c1"># TODO: Calculate passing students</span>
 <span class="n">n_passed</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">student_data</span><span class="p">[</span><span class="n">student_data</span><span class="p">[</span><span class="s1">&#39;passed&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;yes&#39;</span><span class="p">])</span>
@@ -12081,7 +12081,7 @@ This is a classification problem because we need to classify whether a student m
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Total number of students: 395
-Number of features: 31
+Number of features: 30
 Number of students who passed: 265
 Number of students who failed: 130
 Graduation rate of the class: 67.09%
@@ -12107,7 +12107,7 @@ Graduation rate of the class: 67.09%
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Extract feature columns</span>
@@ -12189,7 +12189,7 @@ Feature values:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">preprocess_features</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
@@ -12260,7 +12260,7 @@ Feature values:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="kn">import</span> <span class="n">train_test_split</span>
@@ -12359,6 +12359,10 @@ Testing set has 95 samples.
 <li>Doesn't work well for data that are not linearly separable</li>
 </ul>
 </li>
+<li>Rationale for choosing<ul>
+<li>I include logistic regresion because it's the simplest classification algorithm and can serve as a good base line metrics for other advanced system. Furthermore, we don't know if the data is linearly separable or not, so logistic regresion may work</li>
+</ul>
+</li>
 </ul>
 <p>Support Vector Machines:</p>
 <ul>
@@ -12371,6 +12375,11 @@ Testing set has 95 samples.
 </li>
 <li>Disadvantages<ul>
 <li>Inefficient, not suitable in industry scale application</li>
+</ul>
+</li>
+<li>Rationale for choosing<ul>
+<li>Because our dataset is small, SVM is an appropriate choice in term of performance</li>
+<li>SVM works well with data that are not linearly separable and because we chose logistic regression as the first algorithm, I'm interested in comparing LR with SVM running with a RBF kernel to dertermine if the problem is indeed linearly separable</li>
 </ul>
 </li>
 </ul>
@@ -12387,6 +12396,12 @@ indentifying diseases associated with genes (<a href="http://www.cs.cmu.edu/~qyj
 <li>Random forest weaknesses:<ul>
 <li>RF don't work well with timeseries data</li>
 <li>Trained model is not easily comprehensible</li>
+</ul>
+</li>
+<li>Rationale for choosing<ul>
+<li>I want to include a tree model to compare with SVM since it's also nonparametric.</li>
+<li>Because Random Forest is more robust than single decision tree &amp; less susceptible to overfitting, it seems to be a good choice over simple Decision Tree</li>
+<li>Our data don't have any aspect that are known to cause trouble with Random Forest like time series data</li>
 </ul>
 </li>
 </ul>
@@ -12414,7 +12429,7 @@ indentifying diseases associated with genes (<a href="http://www.cs.cmu.edu/~qyj
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">train_classifier</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">):</span>
@@ -12487,7 +12502,7 @@ indentifying diseases associated with genes (<a href="http://www.cs.cmu.edu/~qyj
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Import the three supervised learning models from sklearn</span>
@@ -12496,32 +12511,14 @@ indentifying diseases associated with genes (<a href="http://www.cs.cmu.edu/~qyj
 <span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
 
 <span class="c1"># TODO: Initialize the three models</span>
-<span class="n">clf_A</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span>
-<span class="n">clf_B</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s2">&quot;rbf&quot;</span><span class="p">)</span>
-<span class="n">clf_C</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">()</span>
+<span class="n">clf_A</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">random_state</span> <span class="o">=</span> <span class="mi">42</span><span class="p">)</span>
+<span class="n">clf_B</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s2">&quot;rbf&quot;</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">42</span><span class="p">)</span>
+<span class="n">clf_C</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">random_state</span> <span class="o">=</span> <span class="mi">42</span><span class="p">)</span>
 
-<span class="c1"># TODO: Set up the training set sizes</span>
-<span class="n">X_train_100</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">100</span><span class="p">]</span>
-<span class="n">y_train_100</span> <span class="o">=</span> <span class="n">y_train</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">100</span><span class="p">]</span>
-
-<span class="n">X_train_200</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">200</span><span class="p">]</span>
-<span class="n">y_train_200</span> <span class="o">=</span> <span class="n">y_train</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">200</span><span class="p">]</span>
-
-<span class="n">X_train_300</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">y_train_300</span> <span class="o">=</span> <span class="n">y_train</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-
-<span class="c1"># TODO: Execute the &#39;train_predict&#39; function for each classifier and each training set size</span>
-<span class="n">train_predict</span><span class="p">(</span><span class="n">clf_A</span><span class="p">,</span> <span class="n">X_train_100</span><span class="p">,</span> <span class="n">y_train_100</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
-<span class="n">train_predict</span><span class="p">(</span><span class="n">clf_A</span><span class="p">,</span> <span class="n">X_train_200</span><span class="p">,</span> <span class="n">y_train_200</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
-<span class="n">train_predict</span><span class="p">(</span><span class="n">clf_A</span><span class="p">,</span> <span class="n">X_train_300</span><span class="p">,</span> <span class="n">y_train_300</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
-
-<span class="n">train_predict</span><span class="p">(</span><span class="n">clf_B</span><span class="p">,</span> <span class="n">X_train_100</span><span class="p">,</span> <span class="n">y_train_100</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
-<span class="n">train_predict</span><span class="p">(</span><span class="n">clf_B</span><span class="p">,</span> <span class="n">X_train_200</span><span class="p">,</span> <span class="n">y_train_200</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
-<span class="n">train_predict</span><span class="p">(</span><span class="n">clf_B</span><span class="p">,</span> <span class="n">X_train_300</span><span class="p">,</span> <span class="n">y_train_300</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
-
-<span class="n">train_predict</span><span class="p">(</span><span class="n">clf_C</span><span class="p">,</span> <span class="n">X_train_100</span><span class="p">,</span> <span class="n">y_train_100</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
-<span class="n">train_predict</span><span class="p">(</span><span class="n">clf_C</span><span class="p">,</span> <span class="n">X_train_200</span><span class="p">,</span> <span class="n">y_train_200</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
-<span class="n">train_predict</span><span class="p">(</span><span class="n">clf_C</span><span class="p">,</span> <span class="n">X_train_300</span><span class="p">,</span> <span class="n">y_train_300</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">clf</span> <span class="ow">in</span> <span class="p">[</span><span class="n">clf_A</span><span class="p">,</span> <span class="n">clf_B</span><span class="p">,</span> <span class="n">clf_C</span><span class="p">]:</span>
+    <span class="k">print</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">{}: </span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">clf</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">__name__</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">300</span><span class="p">]:</span>
+        <span class="n">train_predict</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X_train</span><span class="p">[:</span><span class="n">n</span><span class="p">],</span> <span class="n">y_train</span><span class="p">[:</span><span class="n">n</span><span class="p">],</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12534,60 +12531,69 @@ indentifying diseases associated with genes (<a href="http://www.cs.cmu.edu/~qyj
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Training a LogisticRegression using a training set size of 100. . .
-Trained model in 0.0013 seconds
-Made predictions in 0.0003 seconds.
+<pre>
+LogisticRegression: 
+
+Training a LogisticRegression using a training set size of 100. . .
+Trained model in 0.0046 seconds
+Made predictions in 0.0008 seconds.
 F1 score for training set: 0.8966.
 Made predictions in 0.0003 seconds.
 F1 score for test set: 0.7914.
 Training a LogisticRegression using a training set size of 200. . .
-Trained model in 0.0017 seconds
+Trained model in 0.0021 seconds
 Made predictions in 0.0004 seconds.
 F1 score for training set: 0.8498.
-Made predictions in 0.0004 seconds.
+Made predictions in 0.0003 seconds.
 F1 score for test set: 0.7852.
-Training a LogisticRegression using a training set size of 299. . .
-Trained model in 0.0029 seconds
-Made predictions in 0.0006 seconds.
-F1 score for training set: 0.8406.
-Made predictions in 0.0004 seconds.
-F1 score for test set: 0.7910.
+Training a LogisticRegression using a training set size of 300. . .
+Trained model in 0.0026 seconds
+Made predictions in 0.0003 seconds.
+F1 score for training set: 0.8353.
+Made predictions in 0.0002 seconds.
+F1 score for test set: 0.8000.
+
+SVC: 
+
 Training a SVC using a training set size of 100. . .
-Trained model in 0.0012 seconds
-Made predictions in 0.0009 seconds.
+Trained model in 0.0024 seconds
+Made predictions in 0.0012 seconds.
 F1 score for training set: 0.8263.
 Made predictions in 0.0008 seconds.
 F1 score for test set: 0.8199.
 Training a SVC using a training set size of 200. . .
-Trained model in 0.0028 seconds
-Made predictions in 0.0021 seconds.
+Trained model in 0.0027 seconds
+Made predictions in 0.0025 seconds.
 F1 score for training set: 0.8515.
-Made predictions in 0.0010 seconds.
+Made predictions in 0.0011 seconds.
 F1 score for test set: 0.8188.
-Training a SVC using a training set size of 299. . .
-Trained model in 0.0060 seconds
-Made predictions in 0.0042 seconds.
-F1 score for training set: 0.8578.
-Made predictions in 0.0014 seconds.
+Training a SVC using a training set size of 300. . .
+Trained model in 0.0056 seconds
+Made predictions in 0.0041 seconds.
+F1 score for training set: 0.8559.
+Made predictions in 0.0015 seconds.
 F1 score for test set: 0.8108.
+
+RandomForestClassifier: 
+
 Training a RandomForestClassifier using a training set size of 100. . .
-Trained model in 0.0253 seconds
-Made predictions in 0.0054 seconds.
+Trained model in 0.0320 seconds
+Made predictions in 0.0080 seconds.
 F1 score for training set: 0.9928.
-Made predictions in 0.0051 seconds.
-F1 score for test set: 0.7500.
+Made predictions in 0.0056 seconds.
+F1 score for test set: 0.7826.
 Training a RandomForestClassifier using a training set size of 200. . .
-Trained model in 0.0237 seconds
+Trained model in 0.0282 seconds
+Made predictions in 0.0059 seconds.
+F1 score for training set: 0.9923.
+Made predictions in 0.0070 seconds.
+F1 score for test set: 0.7634.
+Training a RandomForestClassifier using a training set size of 300. . .
+Trained model in 0.0283 seconds
+Made predictions in 0.0056 seconds.
+F1 score for training set: 0.9823.
 Made predictions in 0.0053 seconds.
-F1 score for training set: 0.9961.
-Made predictions in 0.0051 seconds.
-F1 score for test set: 0.7820.
-Training a RandomForestClassifier using a training set size of 299. . .
-Trained model in 0.0285 seconds
-Made predictions in 0.0058 seconds.
-F1 score for training set: 0.9950.
-Made predictions in 0.0052 seconds.
-F1 score for test set: 0.7520.
+F1 score for test set: 0.7258.
 </pre>
 </div>
 </div>
@@ -12624,15 +12630,15 @@ F1 score for test set: 0.7520.
 <tbody>
 <tr>
 <td style="text-align:center">100</td>
-<td style="text-align:center">0.0012</td>
-<td style="text-align:center">0.0005</td>
+<td style="text-align:center">0.0013</td>
+<td style="text-align:center">0.0003</td>
 <td style="text-align:center">0.8966</td>
 <td style="text-align:center">0.7914</td>
 </tr>
 <tr>
 <td style="text-align:center">200</td>
-<td style="text-align:center">0.0024</td>
-<td style="text-align:center">0.0003</td>
+<td style="text-align:center">0.0023</td>
+<td style="text-align:center">0.0006</td>
 <td style="text-align:center">0.8498</td>
 <td style="text-align:center">0.7852</td>
 </tr>
@@ -12640,8 +12646,8 @@ F1 score for test set: 0.7520.
 <td style="text-align:center">300</td>
 <td style="text-align:center">0.0027</td>
 <td style="text-align:center">0.0004</td>
-<td style="text-align:center">0.8406</td>
-<td style="text-align:center">0.7910</td>
+<td style="text-align:center">0.8353</td>
+<td style="text-align:center">0.8000</td>
 </tr>
 </tbody>
 </table>
@@ -12658,24 +12664,24 @@ F1 score for test set: 0.7520.
 <tbody>
 <tr>
 <td style="text-align:center">100</td>
-<td style="text-align:center">0.0016</td>
-<td style="text-align:center">0.0010</td>
+<td style="text-align:center">0.0011</td>
+<td style="text-align:center">0.0007</td>
 <td style="text-align:center">0.8263</td>
 <td style="text-align:center">0.8199</td>
 </tr>
 <tr>
 <td style="text-align:center">200</td>
-<td style="text-align:center">0.0037</td>
+<td style="text-align:center">0.0027</td>
 <td style="text-align:center">0.0013</td>
 <td style="text-align:center">0.8515</td>
 <td style="text-align:center">0.8188</td>
 </tr>
 <tr>
 <td style="text-align:center">300</td>
-<td style="text-align:center">0.0061</td>
-<td style="text-align:center">0.0017</td>
-<td style="text-align:center">0.8578</td>
-<td style="text-align:center">0.8104</td>
+<td style="text-align:center">0.0056</td>
+<td style="text-align:center">0.0015</td>
+<td style="text-align:center">0.8559</td>
+<td style="text-align:center">0.8108</td>
 </tr>
 </tbody>
 </table>
@@ -12692,24 +12698,24 @@ F1 score for test set: 0.7520.
 <tbody>
 <tr>
 <td style="text-align:center">100</td>
-<td style="text-align:center">0.0253</td>
-<td style="text-align:center">0.0051</td>
+<td style="text-align:center">0.0257</td>
+<td style="text-align:center">0.0060</td>
 <td style="text-align:center">0.9928</td>
-<td style="text-align:center">0.7500</td>
+<td style="text-align:center">0.7826</td>
 </tr>
 <tr>
 <td style="text-align:center">200</td>
-<td style="text-align:center">0.0237</td>
-<td style="text-align:center">0.0051</td>
-<td style="text-align:center">0.9961</td>
-<td style="text-align:center">0.7820</td>
+<td style="text-align:center">0.0282</td>
+<td style="text-align:center">0.0059</td>
+<td style="text-align:center">0.9923</td>
+<td style="text-align:center">0.7634</td>
 </tr>
 <tr>
 <td style="text-align:center">300</td>
-<td style="text-align:center">0.0285</td>
-<td style="text-align:center">0.0052</td>
-<td style="text-align:center">0.9950</td>
-<td style="text-align:center">0.7520</td>
+<td style="text-align:center">0.0282</td>
+<td style="text-align:center">0.0054</td>
+<td style="text-align:center">0.9823</td>
+<td style="text-align:center">0.7258</td>
 </tr>
 </tbody>
 </table>
@@ -12769,8 +12775,13 @@ I choose SVC to be the best model. The reasons are:</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong></p>
-<p>SVC works by constructing a plane that best separate the points. The algorithm trains by finding the plan that will have the largest margin between the classes. This in a sense increase the margin of error when predicting new point.</p>
-<p>SVC works well even if points cannot be separated by a straight plane. It can map points to a higher dimension in which a straight plane will be able to separate the points</p>
+<p>Given the following green and red points, SVM will draw a straight line in between them in order to separate them. However, there are infinite number of lines that can be drawn. SVM works by finding the line that is right in the middle between these two group. This makes sense intuitively since that line will have the widest margin between either set of points therefore, it can tollerate more noise &amp; errors
+<img src="SVM_2.png"></p>
+<p>What if we can't draw a straight line between the points. Instead of drawing a circle, SVM will allow us to add a third dimension and map the original points that was in 2D to a 3D. The mapping is called kernel. With the right kernel, the new points can be separated by a equivalence of a line in the new dimension. For 3D, it'd be a plane. This plane is called hyperplane
+See the following image &amp; video for a better visualization
+<img src="data_2d_to_3d_hyperplane.png"></p>
+<p><a href="https://www.youtube.com/watch?v=3liCbRZPrZA">https://www.youtube.com/watch?v=3liCbRZPrZA</a></p>
+<p>SVM only care about points that are closest to the line. These points are called support vector, hence the name Support Vector Machine</p>
 
 </div>
 </div>
@@ -12801,7 +12812,7 @@ I choose SVC to be the best model. The reasons are:</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>
@@ -12822,7 +12833,7 @@ I choose SVC to be the best model. The reasons are:</p>
 <span class="n">grid_obj</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="n">f1_scorer</span><span class="p">)</span>
 
 <span class="c1"># TODO: Fit the grid search object to the training data and find the optimal parameters</span>
-<span class="n">grid_obj</span> <span class="o">=</span> <span class="n">grid_obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_all</span><span class="p">,</span> <span class="n">y_all</span><span class="p">)</span>
+<span class="n">grid_obj</span> <span class="o">=</span> <span class="n">grid_obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 
 <span class="c1"># Get the estimator</span>
 <span class="n">clf</span> <span class="o">=</span> <span class="n">grid_obj</span><span class="o">.</span><span class="n">best_estimator_</span>
@@ -12842,10 +12853,10 @@ I choose SVC to be the best model. The reasons are:</p>
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Made predictions in 0.0045 seconds.
-Tuned model has a training F1 score of 0.8528.
-Made predictions in 0.0018 seconds.
-Tuned model has a testing F1 score of 0.8800.
+<pre>Made predictions in 0.0040 seconds.
+Tuned model has a training F1 score of 0.8559.
+Made predictions in 0.0015 seconds.
+Tuned model has a testing F1 score of 0.8108.
 </pre>
 </div>
 </div>
@@ -12869,8 +12880,7 @@ Tuned model has a testing F1 score of 0.8800.
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Answer: </strong>
-F1 score for training and testing of a tunned model is 0.8528 &amp; 0.8800 respectively. This compare favorbly to 0.8578 and 0.8104 for untunned model</p>
+<h1 id="Answer:-"><strong>Answer: </strong><a class="anchor-link" href="#Answer:-">&#182;</a></h1><p>F1 score for training and testing of a tunned model is 0.8559 &amp; 0.8108 respectively. This is equivalent to the untuned model</p>
 
 </div>
 </div>
