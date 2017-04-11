@@ -11782,7 +11782,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Import libraries necessary for this project</span>
@@ -11837,7 +11837,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Display a description of the dataset</span>
@@ -11964,7 +11964,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Select three indices of your choice you wish to sample from the dataset</span>
@@ -12093,7 +12093,7 @@ First sample buys a lot of fresh, milk, grocery, detergents_paper and delicassen
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
@@ -12126,7 +12126,7 @@ First sample buys a lot of fresh, milk, grocery, detergents_paper and delicassen
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Grocery: 0.547198866995
+<pre>Grocery: 0.616004908447
 </pre>
 </div>
 </div>
@@ -12169,7 +12169,7 @@ I selected Grocery and its score is 0.596633333332. This means the remaining fea
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Produce a scatter matrix for each pair of features in the data</span>
@@ -13665,7 +13665,7 @@ Milk and detergents_paper have strong correlation. So are milk and grocery. This
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Scale the data using the natural logarithm</span>
@@ -17104,7 +17104,7 @@ DIZVwf8Dg6CLV/mtF5UAAAAASUVORK5CYII=
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Display the log-transformed sample data</span>
@@ -17195,7 +17195,7 @@ Once you have performed this implementation, the dataset will be stored in the v
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># For each feature find the data points with extreme high or low values</span>
@@ -17956,7 +17956,7 @@ There are a few data points that are considered outliers for more than one featu
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
@@ -18313,7 +18313,11 @@ wyQiIiIiIhKDOkwiIiIiIiIx/D+jU0IMdAMXcQAAAABJRU5ErkJggg==
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong></p>
-<p>The first and second principal component explain 0.7252 or 72.52% of the variance in the data. The first four account for 92.79% of the variance</p>
+<p>The first and second principal component explain 0.7252 or 72.52% of the variance in the data. The first four account for 92.79% of the variance.</p>
+<p>The first component represent customer total spending in milk, grocery and detergents_paper. This suggests that these 3 features varies together. It indicates that customers tend to buy these 3 categories together.</p>
+<p>The second component is strongly correlated  with fresh, frozen and delicatessen. I think this feature describe customers that are in coffee/restaurant industry</p>
+<p>The 3rd component appears to be low fresh and high milk, frozen and delicatessen spending, typical of a coffee/cafeteria customer</p>
+<p>The 4th component is low frozen &amp; detergents spending while positive on the remaining spendings. This seems to indicate a opposite of a retailer who typically spend a fair amount on detergents_paper &amp; frozen</p>
 
 </div>
 </div>
@@ -18330,7 +18334,7 @@ wyQiIiIiIhKDOkwiIiIiIiIx/D+jU0IMdAMXcQAAAABJRU5ErkJggg==
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Display sample log-data after having a PCA transformation applied</span>
@@ -18418,7 +18422,7 @@ wyQiIiIiIhKDOkwiIiIiIiIx/D+jU0IMdAMXcQAAAABJRU5ErkJggg==
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Apply PCA by fitting the good data with only two dimensions</span>
@@ -18451,7 +18455,7 @@ wyQiIiIiIhKDOkwiIiIiIiIx/D+jU0IMdAMXcQAAAABJRU5ErkJggg==
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Display sample log-data after applying PCA transformation in two dimensions</span>
@@ -18518,7 +18522,7 @@ wyQiIiIiIhKDOkwiIiIiIiIx/D+jU0IMdAMXcQAAAABJRU5ErkJggg==
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Create a biplot</span>
@@ -18533,11 +18537,11 @@ wyQiIiIiIhKDOkwiIiIiIiIx/D+jU0IMdAMXcQAAAABJRU5ErkJggg==
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[13]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[15]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x10b3228d0&gt;</pre>
+<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x10c39e6d0&gt;</pre>
 </div>
 
 </div>
@@ -19611,7 +19615,25 @@ The original feature that is most strongly correlated with the first component i
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong></p>
-<p>K-mean is fast and simple to understand. K-mean can be thought of as a specialized GMM so it has more assumption about the shape of the data than GMM, aka hyperspherical. GMM would work better than K-means when those assumption is not true. GMM is slower than K-means</p>
+<p>K-means</p>
+<p>Pros:</p>
+<ol>
+<li>High performance</li>
+<li>Simple</li>
+</ol>
+<p>Cons:</p>
+<ol>
+<li>Does not work well for non-spherical data</li>
+<li>Does not work well with unevently sized clusters</li>
+</ol>
+<p>GMM</p>
+<p>Pros:</p>
+<ol>
+<li>Soft assigning: Express assignment as a probability therefore allow us to say things like "we're 85% sure this point is in this cluster." K-mean only has hard assignment</li>
+<li>Work well with non-spherical data
+Cons:</li>
+<li>Does not scale to high number of features</li>
+</ol>
 <p>Given how simple K-means is, it's the good first step. We can always compare the score between the two to select one with higher performance</p>
 
 </div>
@@ -19640,7 +19662,7 @@ The original feature that is most strongly correlated with the first component i
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>
@@ -19722,7 +19744,7 @@ The original feature that is most strongly correlated with the first component i
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Display the results of the clustering from implementation</span>
@@ -20361,7 +20383,7 @@ AIDCIRACAAAAUDj/H7sLzUXL7lndAAAAAElFTkSuQmCC
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Inverse transform the centers</span>
@@ -20447,9 +20469,16 @@ AIDCIRACAAAAUDj/H7sLzUXL7lndAAAAAElFTkSuQmCC
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Answer:</strong>
-Segment 1 purchase significantly more in all but 2 categories compared to segment 0. It seems to describe large retailers</p>
-<p>Segment 0 seems to describe small coffee shops or restaurants</p>
+<p><strong>Answer:</strong></p>
+<p>Comparing the centroid of each cluster with statistics of dataset, we notice that:</p>
+<ol>
+<li><p>Segment 0 seems to purchase more in fresh and frozen. Concretely, fresh at 9451 is 1000 higher than the median at 8504, so that probably puts it between 55th-60th percentile. Frozen at 2200 is similar. Meanwhile, its milk is around the 30th-35th percentile, grocery at 27th-30th percentile, detergents_paper at close to 25th percentile and delicatessen is at between 30th-35th percentile</p>
+</li>
+<li><p>Segment 1 purchase of fresh falls between 30th-45th percentile. Its frozen is slighly less than the median. Delicatessen is slightly higher than the median. However, its purchase of milk, grocery, detergents_paper are well above 75th percentile.</p>
+</li>
+</ol>
+<p>This indicates that segment 0 operates at a smaller scale and focus on products that can be turned into prepared food, like fresh and frozen. They are similtar to restaurant and coffee shops</p>
+<p>Second segment are similar to retailer where they buy everythings but focus strongly on milk, grocery, cleaning supplies. And they purchase at much higher scale than the smaller establishment</p>
 
 </div>
 </div>
@@ -20467,7 +20496,7 @@ Segment 1 purchase significantly more in all but 2 categories compared to segmen
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Display the predictions</span>
@@ -20542,10 +20571,9 @@ Sample point 2 predicted to be in Cluster 0
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Answer:</strong></p>
-<p>I struggle to see how this question requires machine learning knowledge. However, my answer follows</p>
-<p>We can't assume the change affect all customers equally. Websites does A/B test which will split their customers into a control and test group. Test group will see change and control group will not. A conversion metrics is then measured. Once a sufficient number of customer to make the difference (if any) between two group statistically significant, the company will pick a variation that leads to the highest conversion.</p>
-<p>I'm not entirely sure this method will work well for a distributor</p>
+<p><strong>Answer:</strong>
+We can't assume the change affect all customers equally. Websites does A/B test which will split their customers into a control and test group. Test group will see change and control group will not. A conversion metrics is then measured. Once a sufficient number of customer to make the difference (if any) between two group statistically significant, the company will pick a variation that leads to the highest conversion.</p>
+<p>For this particular instance, we can select a manageable but statistically significant set of customers from each segment and change their schedule to 3 days a week. We don't have conversion metrics similar to website, but we can measure customer satisfaction. Then we can see which segment react favorably to the change and make it permanent. If a segment reactly negatively to a change, we should revert it</p>
 
 </div>
 </div>
@@ -20591,7 +20619,7 @@ We can build a classifier with target label being the segment that the customer 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Display the clustering results based on &#39;Channel&#39; data</span>
